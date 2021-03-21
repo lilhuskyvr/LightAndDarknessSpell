@@ -1,0 +1,21 @@
+C:\Users\nikon\RiderProjects\LightAndDarknessSpell\LightAndDarknessSpell\obj\Release\LightAndDarknessSpell.csprojResolveAssemblyReference.cache
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\manifest.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\LightAndDarknessSpell.dll
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\LightAndDarknessSpell.pdb
+C:\Users\nikon\RiderProjects\LightAndDarknessSpell\LightAndDarknessSpell\obj\Release\LightAndDarknessSpell.dll
+C:\Users\nikon\RiderProjects\LightAndDarknessSpell\LightAndDarknessSpell\obj\Release\LightAndDarknessSpell.pdb
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Level_LightAndDarknessSpell.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Containers\Container_PlayerDefault.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Effects\Effect_SpellOrbLightAndDarkness.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Spell_SpellLightAndDarkness.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Spells\Spell_LightAndDarkness.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Spell_SpellLightAndDarknessMerge.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Spells\Spell_LightAndDarknessMerge.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\DamageModifiers\DamageModifier_HeavenSwordDefaultPierce.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Damagers\Damager_HeavenSwordPierce.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Weapon_SwordGreatClaymoreHeaven.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Weapon_SwordLongCommonHeaven.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Weapon_SwordLongReverendHeaven.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Weapon_SwordLongReverendLostHeaven.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Weapon_SwordShortAnticHeaven.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Weapon_SwordShortCommonHeaven.json
