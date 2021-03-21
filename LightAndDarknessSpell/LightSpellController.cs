@@ -11,6 +11,7 @@ namespace LightAndDarknessSpell
     {
         private List<ItemData> _swordItemDatas;
         private Random _random;
+        private EffectData _spawnEffectData;
 
         public LightSpellController()
         {
@@ -18,10 +19,9 @@ namespace LightAndDarknessSpell
             _swordItemDatas = new List<ItemData>();
             _swordItemDatas.Add(Catalog.GetData<ItemData>("SwordShortCommonHeaven"));
             _swordItemDatas.Add(Catalog.GetData<ItemData>("SwordShortAnticHeaven"));
-            _swordItemDatas.Add(Catalog.GetData<ItemData>("SwordLongReverendLostHeaven"));
             _swordItemDatas.Add(Catalog.GetData<ItemData>("SwordLongReverendHeaven"));
             _swordItemDatas.Add(Catalog.GetData<ItemData>("SwordLongCommonHeaven"));
-            _swordItemDatas.Add(Catalog.GetData<ItemData>("SwordGreatClaymoreHeaven"));
+            _spawnEffectData = Catalog.GetData<EffectData>("SpawnAngel");
         }
 
         private IEnumerator ExplodeCreature(Creature creature, Vector3 dir)
@@ -92,20 +92,19 @@ namespace LightAndDarknessSpell
 
         public void SpawnAngel(Vector3 position)
         {
-            var random = new System.Random();
+            var random = new Random();
 
-            var creatureId = random.Next(1, 101) <= GameManager.options.maleRatio ? "HumanMale" : "HumanFemale";
+            var creatureId = random.Next(1, 101) <= GameManager.options.maleRatio ? "AngelMale" : "AngelFemale";
             var creature = Catalog.GetData<CreatureData>(creatureId);
-
-            creature.containerID = "Knight1HShield";
-            creature.brainId = "BaseWarrior";
-
             var rotation = Player.local.transform.rotation;
+
+            var spawnEffect = _spawnEffectData.Spawn(position + Vector3.up, rotation);
+            spawnEffect.Play();
+
             GameManager.local.StartCoroutine(creature.SpawnCoroutine(position, rotation, null,
                 rsCreature =>
                 {
-                    rsCreature.SetFaction(2);
-                    rsCreature.gameObject.AddComponent<Angel>();
+                    rsCreature.Hide(true); rsCreature.gameObject.AddComponent<Angel>();
                 }));
         }
 
@@ -149,7 +148,7 @@ namespace LightAndDarknessSpell
             {
                 foreach (var renderer in swordItem.renderers)
                 {
-                    foreach (var material in renderer.materials)
+                    foreach (var material in renderer.sharedMaterials)
                     {
                         if (material.HasProperty("_BaseColor"))
                             material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
@@ -164,7 +163,6 @@ namespace LightAndDarknessSpell
 
         public IEnumerator HeavenlySwordsCoroutine()
         {
-
             foreach (var creature in Creature.list)
             {
                 if (!creature.isPlayer && creature.state != Creature.State.Dead && creature.factionId != 2)

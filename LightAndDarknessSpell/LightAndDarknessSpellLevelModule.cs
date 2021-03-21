@@ -17,7 +17,7 @@ namespace LightAndDarknessSpell
             EventManager.onCreatureSpawn += EventManagerOnonCreatureSpawn;
             EventManager.onLevelLoad += EventManagerOnonLevelLoad;
             _lightAndDarknessSpellController =
-                GameManager.local.gameObject.AddComponent<LightAndDarknessSpellController>();
+                GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>();
 
             return base.OnLoadCoroutine(level);
         }
@@ -56,8 +56,8 @@ namespace LightAndDarknessSpell
         {
             if (_lightAndDarknessSpellController == null)
             {
-                // _lightAndDarknessSpellController =
-                //     GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>();
+                _lightAndDarknessSpellController =
+                    GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>();
                 return;
             }
 

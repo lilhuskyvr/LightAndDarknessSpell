@@ -16,6 +16,17 @@ namespace LightAndDarknessSpell
             StartCoroutine(BansheeTransformation());
         }
 
+        private void Update()
+        {
+            if (_creature == null)
+            {
+                return;
+            }
+            
+            if (Time.time - _creature.spawnTime >= 30)
+                _creature.Kill();
+        }
+
         private IEnumerator BansheeTransformation()
         {
             while (Time.time - _creature.spawnTime <= 1)
@@ -23,10 +34,7 @@ namespace LightAndDarknessSpell
                 yield return new WaitForFixedUpdate();
             }
 
-            var brain = _creature.brain.instance as BrainHuman;
-            brain.canLeave = false;
-            brain.allowDisarm = false;
-
+            _creature.ragdoll.enabled = false;
             _creature.locomotion.speed = 2 * _creature.data.locomotionSpeed;
             _creature.animator.speed = 2;
 
@@ -34,14 +42,28 @@ namespace LightAndDarknessSpell
             {
                 foreach (var renderer in part.GetRenderers())
                 {
-                    foreach (var material in renderer.materials)
+                    foreach (var material in renderer.sharedMaterials)
                     {
-                        material.SetColor("_BaseColor", Color.black);
+                        if (material.HasProperty("_BaseColor"))
+                        {
+                            var materialName = material.name.ToLower();
+                            
+                            var color = materialName.Contains("eye") && !materialName.Contains("brow")? new Color(0,25, 0, 1): new
+                                Color(0, 0, 0, 1);
+                            material.SetColor("_BaseColor", color);
+                        }
                     }
                 }
             }
 
-            _creature.OnKillEvent += (instance, time) => { Destroy(this); };
+            _creature.OnKillEvent += (instance, time) =>
+            {
+                if (time == EventTime.OnEnd)
+                {
+                    Destroy(this);
+                }
+            };
+            _creature.Hide(false);
             yield return null;
         }
     }

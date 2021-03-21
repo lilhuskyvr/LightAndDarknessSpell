@@ -71,7 +71,7 @@
   "bubbleHandSeparationMaxAngle": 45.0,
   "leftSpellId": "LightAndDarkness",
   "rightSpellId": "LightAndDarkness",
-  "chargeSpeed": 1.0,
+  "chargeSpeed": 100.0,
   "chargeStartHandsRatio": 0.4,
   "stopSpeed": 0.6,
   "stopIfManaDepleted": false,
@@ -85,6 +85,6 @@
   "closeHandPoseId": "ChargeClose",
   "openHandPoseId": "ChargeOpen",
   "manaConsumption": 0.0,
-  "manaWaste": 10.0,
+  "manaWaste": 0.0,
   "level": 0
 }

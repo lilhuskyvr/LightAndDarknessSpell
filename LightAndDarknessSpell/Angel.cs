@@ -19,6 +19,17 @@ namespace LightAndDarknessSpell
             StartCoroutine(AngelTransformation());
         }
 
+        private void Update()
+        {
+            if (_creature == null)
+            {
+                return;
+            }
+            
+            if (Time.time - _creature.spawnTime >= 30)
+                _creature.Kill();
+        }
+
         public void Banish(Creature creature, Vector3 damageDirection)
         {
             if (creature.factionId == _creature.factionId || creature.isPlayer) return;
@@ -128,30 +139,17 @@ namespace LightAndDarknessSpell
             {
                 yield return new WaitForFixedUpdate();
             }
-
-            var brain = _creature.brain.instance as BrainHuman;
-            brain.canLeave = false;
-            brain.allowDisarm = false;
-
+            _creature.ragdoll.enabled = false;
             foreach (var part in _creature.manikinLocations.PartList.GetAllParts())
             {
                 foreach (var renderer in part.GetRenderers())
                 {
-                    foreach (var material in renderer.materials)
+                    foreach (var material in renderer.sharedMaterials)
                     {
-                        var materialName = material.name.ToLower();
-
-                        if (
-                            !materialName.Contains("body")
-                            && !materialName.Contains("eye")
-                            && !materialName.Contains("hair")
-                            && !materialName.Contains("head")
-                            && !materialName.Contains("male_hands")
-                            && !materialName.Contains("mouth")
-                        )
-
-                            if (material.HasProperty("_BaseColor"))
-                                material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
+                        if (material.HasProperty("_BaseColor"))
+                        {
+                            material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
+                        }
                     }
                 }
             }
@@ -162,7 +160,7 @@ namespace LightAndDarknessSpell
                 {
                     foreach (var renderer in item.renderers)
                     {
-                        foreach (var material in renderer.materials)
+                        foreach (var material in renderer.sharedMaterials)
                         {
                             material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
                         }
@@ -179,7 +177,7 @@ namespace LightAndDarknessSpell
                 {
                     foreach (var renderer in weapon.renderers)
                     {
-                        foreach (var material in renderer.materials)
+                        foreach (var material in renderer.sharedMaterials)
                         {
                             material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
                         }
@@ -189,9 +187,13 @@ namespace LightAndDarknessSpell
 
             _creature.OnKillEvent += (instance, time) =>
             {
-                Player.local.creature.Heal(20, null);
-                Destroy(this);
+                if (time == EventTime.OnEnd)
+                {
+                    Destroy(this);
+                }
             };
+            
+            _creature.Hide(false);
             yield return null;
         }
     }

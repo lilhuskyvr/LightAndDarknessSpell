@@ -1,0 +1,153 @@
+{
+  "$type": "ThunderRoad.EffectData, Assembly-CSharp",
+  "id": "ShadowWalk",
+  "saveFolder": "Bas",
+  "version": 0,
+  "groupId": "Fire",
+  "volumeDb": 0.0,
+  "modules": [
+    {
+      "$type": "ThunderRoad.EffectModuleParticle, Assembly-CSharp",
+      "effectParticleAddress": "ShadowWalkVfx",
+      "intensityCurve": null,
+      "renderInLateUpdate": false,
+      "goreParticle": false,
+      "mainGradient": {
+        "colorKeys": [
+          {
+            "color": {
+              "r": 0.339622617,
+              "g": 0.0777343959,
+              "b": 0.07208972,
+              "a": 1.0
+            },
+            "time": 0.0
+          },
+          {
+            "color": {
+              "r": 11.9843159,
+              "g": 2.76078415,
+              "b": 0.0,
+              "a": 1.0
+            },
+            "time": 1.0
+          }
+        ],
+        "alphaKeys": [
+          {
+            "alpha": 1.0,
+            "time": 0.0
+          },
+          {
+            "alpha": 1.0,
+            "time": 1.0
+          }
+        ],
+        "mode": "Blend"
+      },
+      "secondaryGradient": null,
+      "mainGradientNoHdr": {
+        "colorKeys": [
+          {
+            "color": {
+              "r": 1.0,
+              "g": 0.6467265,
+              "b": 0.0,
+              "a": 1.0
+            },
+            "time": 0.0
+          },
+          {
+            "color": {
+              "r": 1.0,
+              "g": 0.023146037,
+              "b": 0.0,
+              "a": 1.0
+            },
+            "time": 0.4929732
+          },
+          {
+            "color": {
+              "r": 1.0,
+              "g": 0.6467265,
+              "b": 0.0,
+              "a": 1.0
+            },
+            "time": 1.0
+          }
+        ],
+        "alphaKeys": [
+          {
+            "alpha": 0.9746596,
+            "time": 0.0
+          },
+          {
+            "alpha": 1.0,
+            "time": 1.0
+          }
+        ],
+        "mode": "Blend"
+      },
+      "secondaryGradientNoHdr": {
+        "colorKeys": [
+          {
+            "color": {
+              "r": 1.0,
+              "g": 0.6467265,
+              "b": 0.0,
+              "a": 1.0
+            },
+            "time": 0.0
+          },
+          {
+            "color": {
+              "r": 1.0,
+              "g": 0.023146037,
+              "b": 0.0,
+              "a": 1.0
+            },
+            "time": 0.4929732
+          },
+          {
+            "color": {
+              "r": 1.0,
+              "g": 0.6467265,
+              "b": 0.0,
+              "a": 1.0
+            },
+            "time": 1.0
+          }
+        ],
+        "alphaKeys": [
+          {
+            "alpha": 0.196078435,
+            "time": 0.0
+          },
+          {
+            "alpha": 0.196078435,
+            "time": 1.0
+          }
+        ],
+        "mode": "Blend"
+      },
+      "localScale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "useScaleCurve": false,
+      "scaleCurve": null,
+      "collisionEffectId": null,
+      "collisionLayerMask": -2097353,
+      "collisionMaxGroundAngle": 45.0,
+      "collisionEmitRate": 0.2,
+      "collisionMinIntensity": 0.0,
+      "collisionMaxIntensity": 1.0,
+      "collisionUseMainGradient": false,
+      "collisionUseSecondaryGradient": false,
+      "step": "Start",
+      "stepCustomId": null,
+      "disabled": false
+    }
+  ]
+}

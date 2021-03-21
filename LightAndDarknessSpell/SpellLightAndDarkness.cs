@@ -30,7 +30,7 @@ namespace LightAndDarknessSpell
             }
             else
             {
-                _lightAndDarknessSpellController.darknessSpellController.SpawnBanshee(collisionInstance.contactPoint);
+                _lightAndDarknessSpellController.darknessSpellController.SpawnShadow(collisionInstance.contactPoint);
             }
         }
 

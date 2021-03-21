@@ -1,0 +1,13 @@
+{
+  "$type": "ThunderRoad.MenuData, Assembly-CSharp",
+  "id": "LightAndDarknessSpell",
+  "saveFolder": "Bas",
+  "version": 1,
+  "order": 4.0,
+  "isDefault": false,
+  "iconAddress": "lightanddarknessspellmenuicon",
+  "prefabAddress": "LightAndDarknessSpellMenu",
+  "module": {
+    "$type": "LightAndDarknessSpell.LightAndDarknessSpellMenuModule, LightAndDarknessSpell"
+  }
+}

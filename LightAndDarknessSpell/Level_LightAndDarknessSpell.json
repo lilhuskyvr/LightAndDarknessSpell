@@ -10,6 +10,9 @@
           "$type": "LightAndDarknessSpell.LightAndDarknessSpellLevelModule, LightAndDarknessSpell"
         },
         {
+          "$type": "LightAndDarknessSpell.LightSpellLevelModule, LightAndDarknessSpell"
+        },
+        {
           "$type": "LightAndDarknessSpell.LightAndDarknessSpellTestingLevelModule, LightAndDarknessSpell"
         }
       ]
