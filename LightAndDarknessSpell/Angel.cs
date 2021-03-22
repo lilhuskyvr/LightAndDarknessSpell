@@ -135,6 +135,8 @@ namespace LightAndDarknessSpell
 
         private IEnumerator AngelTransformation()
         {
+            var angelBrightness = GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>().data
+                .angelBrightness;
             while (Time.time - _creature.spawnTime <= 1)
             {
                 yield return new WaitForFixedUpdate();
@@ -148,7 +150,7 @@ namespace LightAndDarknessSpell
                     {
                         if (material.HasProperty("_BaseColor"))
                         {
-                            material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
+                            material.SetColor("_BaseColor", new Color(angelBrightness, angelBrightness, angelBrightness, 1));
                         }
                     }
                 }
@@ -162,7 +164,7 @@ namespace LightAndDarknessSpell
                     {
                         foreach (var material in renderer.sharedMaterials)
                         {
-                            material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
+                            material.SetColor("_BaseColor", new Color(angelBrightness, angelBrightness, angelBrightness, 1));
                         }
                     }
                 }
@@ -179,7 +181,7 @@ namespace LightAndDarknessSpell
                     {
                         foreach (var material in renderer.sharedMaterials)
                         {
-                            material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
+                            material.SetColor("_BaseColor", new Color(angelBrightness, angelBrightness, angelBrightness, 1));
                         }
                     }
                 }
