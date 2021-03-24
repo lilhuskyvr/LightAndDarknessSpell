@@ -10,6 +10,9 @@ namespace LightAndDarknessSpell
     public class LightSpellController
     {
         private List<ItemData> _swordItemDatas;
+        private List<ItemData> _objectItemDatas;
+        private ItemData _fireArrowItemData;
+        private ItemData _lightningItemData;
         private Random _random;
         private EffectData _spawnEffectData;
 
@@ -21,6 +24,24 @@ namespace LightAndDarknessSpell
             _swordItemDatas.Add(Catalog.GetData<ItemData>("SwordShortAnticHeaven"));
             _swordItemDatas.Add(Catalog.GetData<ItemData>("SwordLongReverendHeaven"));
             _swordItemDatas.Add(Catalog.GetData<ItemData>("SwordLongCommonHeaven"));
+
+            _objectItemDatas = new List<ItemData>();
+
+            for (int i = 0; i < Catalog.data.Length; i++)
+            {
+                foreach (CatalogData catalogData in Catalog.data[i])
+                {
+                    if (catalogData is ItemData)
+                    {
+                        ItemData itemData = catalogData as ItemData;
+                        if (itemData.mass >= 50 && !itemData.id.Contains("DeadTreeSpikes"))
+                            _objectItemDatas.Add(itemData);
+                    }
+                }
+            }
+
+            _fireArrowItemData = Catalog.GetData<ItemData>("Arrow");
+            _lightningItemData = Catalog.GetData<ItemData>("DaggerCommon");
             _spawnEffectData = Catalog.GetData<EffectData>("SpawnAngel");
         }
 
@@ -104,7 +125,8 @@ namespace LightAndDarknessSpell
             GameManager.local.StartCoroutine(creature.SpawnCoroutine(position, rotation, null,
                 rsCreature =>
                 {
-                    rsCreature.Hide(true); rsCreature.gameObject.AddComponent<Angel>();
+                    rsCreature.Hide(true);
+                    rsCreature.gameObject.AddComponent<Angel>();
                 }));
         }
 
@@ -115,7 +137,6 @@ namespace LightAndDarknessSpell
             swordItem.rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             swordItem.isThrowed = true;
             swordItem.isFlying = true;
-            swordItem.rb.useGravity = false;
             while (!swordItem.isPenetrating)
             {
                 if (Time.time - startTime <= 30)
@@ -130,6 +151,94 @@ namespace LightAndDarknessSpell
             }
 
             swordItem.Despawn(10);
+
+            yield return null;
+        }
+
+        public IEnumerator FallingObjectItem(Item objectItem, RagdollPart ragdollPart)
+        {
+            var startTime = Time.time;
+            objectItem.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingObject));
+            objectItem.rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            objectItem.isThrowed = true;
+            objectItem.isFlying = true;
+
+            var position = ragdollPart.transform.position;
+            var direction = (position - objectItem.transform.position).normalized;
+            objectItem.rb.velocity = 100 * direction;
+
+            objectItem.Despawn(10);
+
+            yield return null;
+        }
+
+        public IEnumerator FallingFireArrows(Item fireArrowItem, RagdollPart ragdollPart)
+        {
+            fireArrowItem.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingObject));
+            fireArrowItem.rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            fireArrowItem.isThrowed = true;
+            fireArrowItem.isFlying = true;
+
+            while (fireArrowItem.imbues.Count == 0)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+
+            fireArrowItem.imbues[0]
+                .Transfer(Catalog.GetData<SpellCastCharge>("Fire"), fireArrowItem.imbues[0].maxEnergy);
+
+            var startTime = Time.time;
+            while (!fireArrowItem.isPenetrating)
+            {
+                if (Time.time - startTime <= 30)
+                {
+                    var position = ragdollPart.transform.position;
+                    var direction = (position - fireArrowItem.transform.position).normalized;
+                    fireArrowItem.rb.velocity = 30 * direction;
+                    fireArrowItem.transform.rotation *=
+                        Quaternion.FromToRotation(fireArrowItem.flyDirRef.forward, direction);
+
+                    yield return new WaitForFixedUpdate();
+                }
+            }
+
+            fireArrowItem.Despawn(10);
+
+            yield return null;
+        }
+
+        public IEnumerator FallingLightning(Item lightningItem, RagdollPart ragdollPart)
+        {
+            lightningItem.Hide(true);
+            lightningItem.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingObject));
+            lightningItem.rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            lightningItem.isThrowed = true;
+            lightningItem.isFlying = true;
+
+            while (lightningItem.imbues.Count == 0)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+
+            lightningItem.imbues[0].Transfer(Catalog.GetData<SpellCastCharge>("Lightning"),
+                lightningItem.imbues[0].maxEnergy);
+
+            var startTime = Time.time;
+            while (!lightningItem.isPenetrating)
+            {
+                if (Time.time - startTime <= 30)
+                {
+                    var position = ragdollPart.transform.position;
+                    var direction = (position - lightningItem.transform.position).normalized;
+                    lightningItem.rb.velocity = 30 * direction;
+                    lightningItem.transform.rotation *=
+                        Quaternion.FromToRotation(lightningItem.flyDirRef.forward, direction);
+
+                    yield return new WaitForFixedUpdate();
+                }
+            }
+
+            lightningItem.Despawn(10);
 
             yield return null;
         }
@@ -188,6 +297,144 @@ namespace LightAndDarknessSpell
         public void HeavenlySwords()
         {
             GameManager.local.StartCoroutine(HeavenlySwordsCoroutine());
+        }
+
+        public IEnumerator HeavenFireArrowOnRagdollPart(RagdollPart ragdollPart, float timeout)
+        {
+            var startTime = Time.time;
+            while (Time.time - startTime <= timeout)
+            {
+                yield return new WaitForSeconds(1);
+            }
+
+            var heaven = ragdollPart.transform.position + 5 * Vector3.up;
+            _fireArrowItemData.SpawnAsync(
+                meteorItem =>
+                {
+                    meteorItem.transform.position = heaven;
+                    GameManager.local.StartCoroutine(FallingFireArrows(meteorItem, ragdollPart));
+                }, heaven,
+                Quaternion.identity);
+
+            yield return null;
+        }
+
+        public IEnumerator HeavenLightningOnRagdollPart(RagdollPart ragdollPart, float timeout)
+        {
+            var startTime = Time.time;
+            while (Time.time - startTime <= timeout)
+            {
+                yield return new WaitForSeconds(1);
+            }
+
+            var heaven = ragdollPart.transform.position + 5 * Vector3.up;
+            _lightningItemData.SpawnAsync(
+                lightningItem =>
+                {
+                    lightningItem.transform.position = heaven;
+                    GameManager.local.StartCoroutine(FallingLightning(lightningItem, ragdollPart));
+                }, heaven,
+                Quaternion.identity);
+
+            yield return null;
+        }
+
+        public IEnumerator HeavenlyObjectOnRagdollPart(RagdollPart ragdollPart, float timeout)
+        {
+            var startTime = Time.time;
+            while (Time.time - startTime <= timeout)
+            {
+                yield return new WaitForSeconds(1);
+            }
+
+            var heaven = ragdollPart.transform.position + 5 * Vector3.up;
+            var objectItemData = _objectItemDatas[_random.Next(0, _objectItemDatas.Count)];
+            objectItemData.SpawnAsync(
+                objectItem => { GameManager.local.StartCoroutine(FallingObjectItem(objectItem, ragdollPart)); }, heaven,
+                Quaternion.identity);
+
+            yield return null;
+        }
+
+        public IEnumerator HeavenlyFireArrowsCoroutine()
+        {
+            foreach (var creature in Creature.list)
+            {
+                if (!creature.isPlayer && creature.state != Creature.State.Dead && creature.factionId != 2)
+                {
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.Head), 0));
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.LeftArm), 0));
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.RightArm), 0));
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.Torso), 0.5f));
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.LeftLeg), 0.5f));
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.RightLeg), 0.5f));
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.LeftHand), 1));
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.RightHand), 1));
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.LeftFoot), 1));
+                    GameManager.local.StartCoroutine(
+                        HeavenFireArrowOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.RightFoot), 1));
+                }
+            }
+
+            yield return null;
+        }
+
+        public IEnumerator HeavenlyLightningCoroutine()
+        {
+            foreach (var creature in Creature.list)
+            {
+                if (!creature.isPlayer && creature.state != Creature.State.Dead && creature.factionId != 2)
+                {
+                    GameManager.local.StartCoroutine(
+                        HeavenLightningOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.Head), 0));
+                    GameManager.local.StartCoroutine(
+                        HeavenLightningOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.LeftArm), 0));
+                    GameManager.local.StartCoroutine(
+                        HeavenLightningOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.RightArm), 0));
+                    GameManager.local.StartCoroutine(
+                        HeavenLightningOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.Torso), 0));
+                }
+            }
+
+            yield return null;
+        }
+
+        public IEnumerator HeavenlyObjectsCoroutine()
+        {
+            foreach (var creature in Creature.list)
+            {
+                if (!creature.isPlayer && creature.state != Creature.State.Dead && creature.factionId != 2)
+                {
+                    GameManager.local.StartCoroutine(
+                        HeavenlyObjectOnRagdollPart(creature.ragdoll.GetPart(RagdollPart.Type.Head), 0));
+                }
+            }
+
+            yield return null;
+        }
+
+        public void HeavenlyFireArrows()
+        {
+            GameManager.local.StartCoroutine(HeavenlyFireArrowsCoroutine());
+        }
+
+        public void HeavenlyLightning()
+        {
+            GameManager.local.StartCoroutine(HeavenlyLightningCoroutine());
+        }
+
+        public void HeavenlyObjects()
+        {
+            GameManager.local.StartCoroutine(HeavenlyObjectsCoroutine());
         }
     }
 }

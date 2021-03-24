@@ -17,6 +17,24 @@
       "reference": 0,
       "quantity": 1,
       "customValues": []
+    },
+    {
+      "referenceID": "SpellLightAndDarknessMergeFire",
+      "reference": 0,
+      "quantity": 1,
+      "customValues": []
+    },
+    {
+      "referenceID": "SpellLightAndDarknessMergeLightning",
+      "reference": 0,
+      "quantity": 1,
+      "customValues": []
+    },
+    {
+      "referenceID": "SpellLightAndDarknessMergeGravity",
+      "reference": 0,
+      "quantity": 1,
+      "customValues": []
     }
   ]
 }

@@ -17,9 +17,21 @@ namespace LightAndDarknessSpell
             DebugLogConsole.AddCommandInstance("lads_b",
                 "Spawn Banshee", "SpawnBanshee",
                 this);
-            DebugLogConsole.AddCommandInstance("lads_h",
+            DebugLogConsole.AddCommandInstance("lads_hs",
                 "Heavenly Swords", "HeavenlySwords",
                 this);
+            DebugLogConsole.AddCommandInstance("lads_hf",
+                "Heavenly Meteours", "HeavenlyFireArrows",
+                this);
+            
+            DebugLogConsole.AddCommandInstance("lads_hl",
+                "Heavenly Lightning", "HeavenlyLightning",
+                this);
+            
+            DebugLogConsole.AddCommandInstance("lads_ho",
+                "Heavenly Objects", "HeavenlyObjects",
+                this);
+            
             DebugLogConsole.AddCommandInstance("lads_s",
                 "Shadow Walk", "ShadowWalk",
                 this);
@@ -48,6 +60,25 @@ namespace LightAndDarknessSpell
         {
             GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>().lightSpellController
                 .HeavenlySwords();
+        }
+        
+        private void HeavenlyFireArrows()
+        {
+            GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>().lightSpellController
+                .HeavenlyFireArrows();
+        }
+        
+        
+        private void HeavenlyLightning()
+        {
+            GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>().lightSpellController
+                .HeavenlyLightning();
+        }
+        
+        private void HeavenlyObjects()
+        {
+            GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>().lightSpellController
+                .HeavenlyObjects();
         }
 
         private void ShadowWalk()
