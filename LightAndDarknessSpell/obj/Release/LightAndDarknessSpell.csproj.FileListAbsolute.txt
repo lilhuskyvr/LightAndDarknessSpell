@@ -28,3 +28,9 @@ D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\M
 D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Effects\Effect_SpawnAngel.json
 D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Effects\Effect_SpawnShadow.json
 D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Effects\Effect_ShadowWalk.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Spells\Spell_LightAndDarknessMergeFire.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Spells\Spell_LightAndDarknessMergeGravity.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Spells\Spell_LightAndDarknessMergeLightning.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Spell_SpellLightAndDarknessMergeFire.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Spell_SpellLightAndDarknessMergeGravity.json
+D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Items\Item_Spell_SpellLightAndDarknessMergeLightning.json

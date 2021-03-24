@@ -78,6 +78,9 @@
     <Compile Include="LightAndDarknessSpellMenuModule.cs" />
     <Compile Include="LightAndDarknessSpellTestingLevelModule.cs" />
     <Compile Include="SpellLightAndDarknessMerge.cs" />
+    <Compile Include="SpellLightAndDarknessMergeFire.cs" />
+    <Compile Include="SpellLightAndDarknessMergeGravity.cs" />
+    <Compile Include="SpellLightAndDarknessMergeLightning.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Brains\Brain_BaseLegendaryWarrior.json">
@@ -129,6 +132,15 @@
     <Content Include="Items\Item_Spell_SpellLightAndDarknessMerge.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Items\Item_Spell_SpellLightAndDarknessMergeFire.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Items\Item_Spell_SpellLightAndDarknessMergeGravity.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Items\Item_Spell_SpellLightAndDarknessMergeLightning.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Items\Item_Weapon_SwordLongCommonHeaven.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -154,6 +166,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Spells\Spell_LightAndDarknessMerge.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Spells\Spell_LightAndDarknessMergeFire.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Spells\Spell_LightAndDarknessMergeGravity.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Spells\Spell_LightAndDarknessMergeLightning.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
