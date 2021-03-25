@@ -126,7 +126,8 @@ namespace LightAndDarknessSpell
                 rsCreature =>
                 {
                     rsCreature.Hide(true);
-                    rsCreature.gameObject.AddComponent<Angel>();
+                    var angel = rsCreature.gameObject.AddComponent<Angel>();
+                    angel.Init(true, false);
                 }));
         }
 

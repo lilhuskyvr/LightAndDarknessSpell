@@ -5,7 +5,7 @@
   "version": 5,
   "pooledCount": 20,
   "androidPooledCount": 5,
-  "name": "HumanFemale",
+  "name": "ShadowFemale",
   "displayName": "{Human}",
   "prefabAddress": "Bas.Creature.HumanFemale",
   "removeMeshWhenPooled": false,

@@ -6,19 +6,28 @@ using Random = System.Random;
 
 namespace LightAndDarknessSpell
 {
-    public class Banshee : MonoBehaviour
+    public class Shadow : MonoBehaviour
     {
         private Creature _creature;
 
-        private void Start()
+        public bool isSelfDestroy;
+        public bool hasRagdoll;
+
+        private void Awake()
         {
             _creature = GetComponent<Creature>();
-            StartCoroutine(BansheeTransformation());
+        }
+
+        public void Init(bool isSelfDestroyParam, bool hasRagdollParam)
+        {
+            isSelfDestroy = isSelfDestroyParam;
+            hasRagdoll = hasRagdollParam;
+            StartCoroutine(ShadowTransformation());
         }
 
         private void Update()
         {
-            if (_creature == null)
+            if (_creature == null || !isSelfDestroy)
             {
                 return;
             }
@@ -27,14 +36,14 @@ namespace LightAndDarknessSpell
                 _creature.Kill();
         }
 
-        private IEnumerator BansheeTransformation()
+        private IEnumerator ShadowTransformation()
         {
             while (Time.time - _creature.spawnTime <= 1)
             {
                 yield return new WaitForFixedUpdate();
             }
 
-            _creature.ragdoll.enabled = false;
+            _creature.ragdoll.enabled = hasRagdoll;
             _creature.locomotion.speed = 2 * _creature.data.locomotionSpeed;
             _creature.animator.speed = 2;
 

@@ -62,7 +62,8 @@ namespace LightAndDarknessSpell
                 rsCreature =>
                 {
                     rsCreature.Hide(true);
-                    rsCreature.gameObject.AddComponent<Banshee>();
+                    var shadow = rsCreature.gameObject.AddComponent<Shadow>();
+                    shadow.Init(true, false);
                 }));
         }
 

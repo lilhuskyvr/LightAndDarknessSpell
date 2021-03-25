@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ThunderRoad;
-using UnityEngine;
+using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
 // ReSharper disable UnusedMember.Local
@@ -18,9 +19,25 @@ namespace LightAndDarknessSpell
             EventManager.onCreatureHit += EventManagerOnonCreatureHit;
             EventManager.onCreatureParry += EventManagerOnonCreatureParry;
 
+            EventManager.onCreatureSpawn += EventManagerOnonCreatureSpawn;
+
             _creatures = new List<Creature>();
 
             return base.OnLoadCoroutine(level);
+        }
+
+        private void EventManagerOnonCreatureSpawn(Creature creature)
+        {
+            if (creature.name.Contains("Angel"))
+            {
+                if (creature.factionId != 2)
+                {
+                    Debug.Log("Enemy Angel");
+                    //enemy angel
+                    var angel = creature.gameObject.AddComponent<Angel>();
+                    angel.Init(false, true);
+                }
+            }
         }
 
         private void EventManagerOnonCreatureParry(Creature creature, CollisionInstance collisioninstance)
@@ -32,7 +49,8 @@ namespace LightAndDarknessSpell
                 if (sourceCreature.gameObject.GetComponent<Angel>() != null)
                 {
                     collisioninstance.targetColliderGroup.collisionHandler.item.mainHandler.TryRelease();
-                    collisioninstance.targetColliderGroup.collisionHandler.item.rb.AddForce(collisioninstance.impactVelocity);
+                    collisioninstance.targetColliderGroup.collisionHandler.item.rb.AddForce(collisioninstance
+                        .impactVelocity);
                     collisioninstance.targetColliderGroup.collisionHandler.item.mainHandler.creature.brain.instance
                         .TryKnockout(collisioninstance);
                 }
