@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Angel.cs" />
+    <Compile Include="AngelItem.cs" />
     <Compile Include="DarknessSpellLevelModule.cs" />
     <Compile Include="Shadow.cs" />
     <Compile Include="DarknessSpellController.cs" />

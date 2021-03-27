@@ -53,7 +53,14 @@ namespace LightAndDarknessSpell
                 GameManager.local.gameObject.AddComponent<LightAndDarknessSpellController>();
 
             lightAndDarknessSpellController.data = savedData;
-            
+
+            lightAndDarknessSpellController.lightSpellController.angelColor = new Color(
+                lightAndDarknessSpellController.data.angelBrightness,
+                lightAndDarknessSpellController.data.angelBrightness,
+                lightAndDarknessSpellController.data.angelBrightness,
+                1
+            );
+
             Debug.Log("Loaded Light And Darkness Spell");
         }
 

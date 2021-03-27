@@ -28,14 +28,15 @@ namespace LightAndDarknessSpell
 
         private void EventManagerOnonCreatureSpawn(Creature creature)
         {
-            if (creature.name.Contains("Angel"))
+            if (creature.data.id.Contains("Angel"))
             {
                 if (creature.factionId != 2)
                 {
-                    Debug.Log("Enemy Angel");
+                    creature.Hide(true);
                     //enemy angel
                     var angel = creature.gameObject.AddComponent<Angel>();
-                    angel.Init(false, true);
+                    angel.Init(false, true, GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>()
+                        .lightSpellController.angelColor);
                 }
             }
         }

@@ -53,12 +53,11 @@ namespace LightAndDarknessSpell
             var random = new System.Random();
 
             var creatureId = random.Next(1, 101) <= GameManager.options.maleRatio ? "ShadowMale" : "ShadowFemale";
-            var creature = Catalog.GetData<CreatureData>(creatureId);
-
+            var creatureData = Catalog.GetData<CreatureData>(creatureId);
             var rotation = Player.local.transform.rotation;
             var spawnEffect = _spawnEffectData.Spawn(position + Vector3.up, rotation);
             spawnEffect.Play();
-            GameManager.local.StartCoroutine(creature.SpawnCoroutine(position, rotation, null,
+            GameManager.local.StartCoroutine(creatureData.SpawnCoroutine(position, rotation, null,
                 rsCreature =>
                 {
                     rsCreature.Hide(true);

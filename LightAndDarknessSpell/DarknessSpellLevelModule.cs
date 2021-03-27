@@ -11,7 +11,6 @@ namespace LightAndDarknessSpell
 {
     public class DarknessSpellLevelModule : LevelModule
     {
-
         public override IEnumerator OnLoadCoroutine(Level level)
         {
             EventManager.onCreatureSpawn += EventManagerOnonCreatureSpawn;
@@ -21,10 +20,11 @@ namespace LightAndDarknessSpell
 
         private void EventManagerOnonCreatureSpawn(Creature creature)
         {
-            if (creature.name.Contains("Shadow"))
+            if (creature.data.id.Contains("Shadow"))
             {
                 if (creature.factionId != 2)
                 {
+                    creature.Hide(true);
                     var shadow = creature.gameObject.AddComponent<Shadow>();
                     shadow.Init(false, true);
                 }
