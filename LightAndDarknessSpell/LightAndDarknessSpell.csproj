@@ -62,7 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Angel.cs" />
-    <Compile Include="Banshee.cs" />
+    <Compile Include="AngelItem.cs" />
+    <Compile Include="DarknessSpellLevelModule.cs" />
+    <Compile Include="Shadow.cs" />
     <Compile Include="DarknessSpellController.cs" />
     <Compile Include="FrozenAnimationCreature.cs" />
     <Compile Include="FrozenItem.cs" />
@@ -100,6 +102,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Creatures\Creature_AngelMale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CreatureTables\CreatureTable_Angels.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CreatureTables\CreatureTable_Shadows.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DamageModifiers\DamageModifier_HeavenSwordDefaultPierce.json">
@@ -177,13 +185,43 @@
     <Content Include="Spells\Spell_LightAndDarknessMergeLightning.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Waves\Wave_Angels1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waves\Wave_Angels2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waves\Wave_Angels3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waves\Wave_Angels4.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waves\Wave_Angels5.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waves\Wave_Shadows1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waves\Wave_Shadows2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waves\Wave_Shadows3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waves\Wave_Shadows4.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Waves\Wave_Shadows5.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-                           Other similar extension points exist, see Microsoft.Common.targets.
-                      <Target Name="BeforeBuild">
-                      </Target>
-                      <Target Name="AfterBuild">
-                      </Target>
-                      -->
+                             Other similar extension points exist, see Microsoft.Common.targets.
+                        <Target Name="BeforeBuild">
+                        </Target>
+                        <Target Name="AfterBuild">
+                        </Target>
+                        -->
 </Project>

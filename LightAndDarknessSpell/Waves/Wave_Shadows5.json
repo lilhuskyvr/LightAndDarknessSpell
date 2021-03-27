@@ -1,0 +1,118 @@
+{
+  "$type": "ThunderRoad.WaveData, Assembly-CSharp",
+  "id": "Shadows5",
+  "saveFolder": "Bas",
+  "version": 2,
+  "category": "1Shadows",
+  "title": "5 Shadows",
+  "description": "5 Shadows",
+  "loop": true,
+  "maxAlive": 5,
+  "alwaysAvailable": true,
+  "waveSelectors": [
+    "Arena",
+    "Ruins",
+    "Market",
+    "Canyon",
+    "Citadel"
+  ],
+  "playerHealthMultiplier": 1.0,
+  "enemiesHealthMultiplier": 1.0,
+  "groups": [
+    {
+      "reference": "Table",
+      "referenceID": "Shadows",
+      "overrideFaction": true,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "Gladiator1H",
+      "overrideBrain": false,
+      "overrideBrainID": "RecruitBrainWarrior",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "minMaxCount": {
+        "x": 2,
+        "y": 2
+      },
+      "spawnPointIndex": -1,
+      "conditionStepIndex": -1,
+      "conditionThreshold": 0
+    },
+    {
+      "reference": "Table",
+      "referenceID": "Shadows",
+      "overrideFaction": true,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "Gladiator1H",
+      "overrideBrain": false,
+      "overrideBrainID": "RecruitBrainWarrior",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "minMaxCount": {
+        "x": 2,
+        "y": 2
+      },
+      "spawnPointIndex": -1,
+      "conditionStepIndex": -1,
+      "conditionThreshold": 0
+    },
+    {
+      "reference": "Table",
+      "referenceID": "Shadows",
+      "overrideFaction": true,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "Gladiator1H",
+      "overrideBrain": false,
+      "overrideBrainID": "RecruitBrainWarrior",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "minMaxCount": {
+        "x": 2,
+        "y": 2
+      },
+      "spawnPointIndex": -1,
+      "conditionStepIndex": -1,
+      "conditionThreshold": 0
+    },
+    {
+      "reference": "Table",
+      "referenceID": "Shadows",
+      "overrideFaction": true,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "Gladiator1H",
+      "overrideBrain": false,
+      "overrideBrainID": "RecruitBrainWarrior",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "minMaxCount": {
+        "x": 2,
+        "y": 2
+      },
+      "spawnPointIndex": -1,
+      "conditionStepIndex": -1,
+      "conditionThreshold": 0
+    },
+    {
+      "reference": "Table",
+      "referenceID": "Shadows",
+      "overrideFaction": true,
+      "factionID": 5,
+      "overrideContainer": false,
+      "overrideContainerID": "Gladiator1H",
+      "overrideBrain": false,
+      "overrideBrainID": "RecruitBrainWarrior",
+      "overrideMaxMelee": false,
+      "overrideMaxMeleeCount": 2,
+      "minMaxCount": {
+        "x": 2,
+        "y": 2
+      },
+      "spawnPointIndex": -1,
+      "conditionStepIndex": -1,
+      "conditionThreshold": 0
+    }
+  ]
+}
