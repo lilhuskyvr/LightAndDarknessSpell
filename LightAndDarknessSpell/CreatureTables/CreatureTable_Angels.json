@@ -1,0 +1,32 @@
+{
+  "$type": "ThunderRoad.CreatureTable, Assembly-CSharp",
+  "id": "Angels",
+  "saveFolder": "Bas",
+  "version": 1,
+  "description": null,
+  "linkedToGenderRatio": true,
+  "drops": [
+    {
+      "reference": "Creature",
+      "referenceID": "AngelFemale",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "probabilityWeight": 50.0
+    },
+    {
+      "reference": "Creature",
+      "referenceID": "AngelMale",
+      "overrideFaction": false,
+      "factionID": 0,
+      "overrideContainer": false,
+      "overrideContainerID": "",
+      "overrideBrain": false,
+      "overrideBrainID": "",
+      "probabilityWeight": 50.0
+    }
+  ]
+}

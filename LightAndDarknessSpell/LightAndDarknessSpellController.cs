@@ -9,6 +9,7 @@ namespace LightAndDarknessSpell
     {
         // ReSharper disable once InconsistentNaming
         public bool isLightPath { get; set; }
+        public float angelBrightness { get; set; }
     }
 
     public class LightAndDarknessSpellController : MonoBehaviour

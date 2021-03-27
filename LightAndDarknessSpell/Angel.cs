@@ -11,21 +11,31 @@ namespace LightAndDarknessSpell
         private Creature _creature;
         private Random _random;
         private bool _isExploding;
+        public bool isSelfDestroy;
+        public bool hasRagdoll;
+        public Color angelColor;
 
-        private void Start()
+        private void Awake()
         {
             _creature = GetComponent<Creature>();
             _random = new Random();
+        }
+
+        public void Init(bool isSelfDestroyParam, bool hasRagdollParam, Color angelColorParam)
+        {
+            isSelfDestroy = isSelfDestroyParam;
+            hasRagdoll = hasRagdollParam;
+            angelColor = angelColorParam;
             StartCoroutine(AngelTransformation());
         }
 
         private void Update()
         {
-            if (_creature == null)
+            if (_creature == null || !isSelfDestroy)
             {
                 return;
             }
-            
+
             if (Time.time - _creature.spawnTime >= 30)
                 _creature.Kill();
         }
@@ -139,7 +149,10 @@ namespace LightAndDarknessSpell
             {
                 yield return new WaitForFixedUpdate();
             }
-            _creature.ragdoll.enabled = false;
+            
+            _creature.equipment.EquipAllWardrobes(false);
+
+            _creature.ragdoll.enabled = hasRagdoll;
             foreach (var part in _creature.manikinLocations.PartList.GetAllParts())
             {
                 foreach (var renderer in part.GetRenderers())
@@ -148,7 +161,7 @@ namespace LightAndDarknessSpell
                     {
                         if (material.HasProperty("_BaseColor"))
                         {
-                            material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
+                            material.SetColor("_BaseColor", angelColor);
                         }
                     }
                 }
@@ -162,7 +175,10 @@ namespace LightAndDarknessSpell
                     {
                         foreach (var material in renderer.sharedMaterials)
                         {
-                            material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
+                            if (material.HasProperty("_BaseColor"))
+                            {
+                                material.SetColor("_BaseColor", angelColor);
+                            }
                         }
                     }
                 }
@@ -179,7 +195,10 @@ namespace LightAndDarknessSpell
                     {
                         foreach (var material in renderer.sharedMaterials)
                         {
-                            material.SetColor("_BaseColor", new Color(25, 25, 25, 1));
+                            if (material.HasProperty("_BaseColor"))
+                            {
+                                material.SetColor("_BaseColor", angelColor);
+                            }
                         }
                     }
                 }
@@ -192,7 +211,7 @@ namespace LightAndDarknessSpell
                     Destroy(this);
                 }
             };
-            
+
             _creature.Hide(false);
             yield return null;
         }
