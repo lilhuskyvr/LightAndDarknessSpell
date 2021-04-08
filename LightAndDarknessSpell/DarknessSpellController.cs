@@ -70,7 +70,7 @@ namespace LightAndDarknessSpell
         {
             isTimeStopped = true;
 
-            PostProcessManager.SetSepia(_saturationMultiplier);
+            CameraEffects.SetSepia(_saturationMultiplier);
             yield return null;
         }
 
@@ -114,7 +114,7 @@ namespace LightAndDarknessSpell
 
             isTimeStopped = false;
 
-            PostProcessManager.RefreshPostProcess();
+            CameraEffects.RefreshPostProcess();
 
             yield return null;
         }
