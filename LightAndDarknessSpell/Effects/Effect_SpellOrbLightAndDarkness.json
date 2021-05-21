@@ -717,7 +717,7 @@
     {
       "$type": "ThunderRoad.EffectModuleParticle, Assembly-CSharp",
       "effectLink": "Intensity",
-      "effectParticleAddress": "Bas.Particle.Spell.Gravity.Orb",
+      "effectParticleAddress": "Bas.Particle.Spell.Lightning.Orb",
       "intensityCurve": {
         "keys": [
           {
