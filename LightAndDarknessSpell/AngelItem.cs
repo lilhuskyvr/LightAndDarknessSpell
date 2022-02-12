@@ -14,10 +14,13 @@ namespace LightAndDarknessSpell
             var lad = GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>();
             if (lad.data.isLightPath)
                 lad.lightSpellController.PaintItem(_item);
-            _item.OnDespawnEvent += () =>
-            {
-                Destroy(this);
-            };
+            _item.OnDespawnEvent += ItemOnOnDespawnEvent;
+        }
+
+        private void ItemOnOnDespawnEvent(EventTime eventtime)
+        {
+            if (eventtime != EventTime.OnEnd) return;
+            Destroy(this);
         }
     }
 }

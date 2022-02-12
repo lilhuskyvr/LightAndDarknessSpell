@@ -17,9 +17,13 @@ namespace LightAndDarknessSpell
             _defaultLocomotionSpeed = _creature.locomotion.speed;
             _defaultAnimatorSpeed = _creature.animator.speed;
             _creature.brain.Stop();
-            _creature.brain.Load("FrozenCreature");
-            _creature.brain.StopNavigation();
-            _creature.brain.StopTurn();
+            if (_creature.animator.isHuman)
+            {
+                _creature.brain.Load("FrozenCreature");
+            }
+
+            _creature.StopAnimation();
+            _creature.brain.StopAllCoroutines();
             _creature.locomotion.MoveStop();
             _creature.locomotion.speed = 0;
             _creature.animator.speed = 0;

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using ThunderRoad;
-using Debug = UnityEngine.Debug;
-using Object = UnityEngine.Object;
 
 // ReSharper disable UnusedMember.Local
 
@@ -14,16 +11,15 @@ namespace LightAndDarknessSpell
     {
         private List<Creature> _creatures;
 
-        public override IEnumerator OnLoadCoroutine(Level level)
+        public override IEnumerator OnLoadCoroutine()
         {
             EventManager.onCreatureHit += EventManagerOnonCreatureHit;
-            EventManager.onCreatureParry += EventManagerOnonCreatureParry;
 
             EventManager.onCreatureSpawn += EventManagerOnonCreatureSpawn;
 
             _creatures = new List<Creature>();
 
-            return base.OnLoadCoroutine(level);
+            return base.OnLoadCoroutine();
         }
 
         private void EventManagerOnonCreatureSpawn(Creature creature)
@@ -38,27 +34,6 @@ namespace LightAndDarknessSpell
                     angel.Init(false, true, GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>()
                         .lightSpellController.angelColor);
                 }
-            }
-        }
-
-        private void EventManagerOnonCreatureParry(Creature creature, CollisionInstance collisioninstance)
-        {
-            try
-            {
-                var sourceCreature = collisioninstance.sourceColliderGroup.collisionHandler.item.mainHandler.creature;
-
-                if (sourceCreature.gameObject.GetComponent<Angel>() != null)
-                {
-                    collisioninstance.targetColliderGroup.collisionHandler.item.mainHandler.TryRelease();
-                    collisioninstance.targetColliderGroup.collisionHandler.item.rb.AddForce(collisioninstance
-                        .impactVelocity);
-                    collisioninstance.targetColliderGroup.collisionHandler.item.mainHandler.creature.brain.instance
-                        .TryKnockout(collisioninstance);
-                }
-            }
-            catch (Exception exception)
-            {
-                //ignored
             }
         }
 
@@ -98,7 +73,7 @@ namespace LightAndDarknessSpell
                     }
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 //ignored
             }

@@ -110,7 +110,7 @@ namespace LightAndDarknessSpell
                 GameManager.local.StartCoroutine(ExplodeCreature(targetCreature,
                     collisionInstance.impactVelocity));
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 //ignore
             }
@@ -140,7 +140,7 @@ namespace LightAndDarknessSpell
         public IEnumerator FallingItem(Item item, RagdollPart ragdollPart)
         {
             var startTime = Time.time;
-            item.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingObject));
+            item.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingItem));
             item.rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             item.isThrowed = true;
             item.isFlying = true;
@@ -165,7 +165,7 @@ namespace LightAndDarknessSpell
         public IEnumerator FallingObjectItem(Item objectItem, RagdollPart ragdollPart)
         {
             var startTime = Time.time;
-            objectItem.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingObject));
+            objectItem.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingItem));
             objectItem.rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             objectItem.isThrowed = true;
             objectItem.isFlying = true;
@@ -181,7 +181,7 @@ namespace LightAndDarknessSpell
 
         public IEnumerator FallingFireArrows(Item fireArrowItem, RagdollPart ragdollPart)
         {
-            fireArrowItem.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingObject));
+            fireArrowItem.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingItem));
             fireArrowItem.rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             fireArrowItem.isThrowed = true;
             fireArrowItem.isFlying = true;
@@ -217,7 +217,7 @@ namespace LightAndDarknessSpell
         public IEnumerator FallingLightning(Item lightningItem, RagdollPart ragdollPart)
         {
             lightningItem.Hide(true);
-            lightningItem.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingObject));
+            lightningItem.SetColliderAndMeshLayer(GameManager.GetLayer(LayerName.MovingItem));
             lightningItem.rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             lightningItem.isThrowed = true;
             lightningItem.isFlying = true;
@@ -279,7 +279,7 @@ namespace LightAndDarknessSpell
 
         public IEnumerator HeavenlySwordsCoroutine()
         {
-            foreach (var creature in Creature.list)
+            foreach (var creature in Creature.all)
             {
                 if (!creature.isPlayer && creature.state != Creature.State.Dead && creature.factionId != 2)
                 {
@@ -386,7 +386,7 @@ namespace LightAndDarknessSpell
 
         public IEnumerator HeavenlyFireArrowsCoroutine()
         {
-            foreach (var creature in Creature.list)
+            foreach (var creature in Creature.all)
             {
                 if (!creature.isPlayer && creature.state != Creature.State.Dead && creature.factionId != 2)
                 {
@@ -418,7 +418,7 @@ namespace LightAndDarknessSpell
 
         public IEnumerator HeavenlyLightningCoroutine()
         {
-            foreach (var creature in Creature.list)
+            foreach (var creature in Creature.all)
             {
                 if (!creature.isPlayer && creature.state != Creature.State.Dead && creature.factionId != 2)
                 {
@@ -438,7 +438,7 @@ namespace LightAndDarknessSpell
 
         public IEnumerator HeavenlyObjectsCoroutine()
         {
-            foreach (var creature in Creature.list)
+            foreach (var creature in Creature.all)
             {
                 if (!creature.isPlayer && creature.state != Creature.State.Dead && creature.factionId != 2)
                 {

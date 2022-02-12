@@ -46,3 +46,6 @@ D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\M
 D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Waves\Wave_Shadows3.json
 D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Waves\Wave_Shadows4.json
 D:\Steam\steamapps\common\Blade & Sorcery\BladeAndSorcery_Data\StreamingAssets\Mods\LightAndDarknessSpell\Waves\Wave_Shadows5.json
+D:\Projects\RiderProjects\LightAndDarknessSpell\LightAndDarknessSpell\obj\Release\LightAndDarknessSpell.csprojResolveAssemblyReference.cache
+D:\Projects\RiderProjects\LightAndDarknessSpell\LightAndDarknessSpell\obj\Release\LightAndDarknessSpell.dll
+D:\Projects\RiderProjects\LightAndDarknessSpell\LightAndDarknessSpell\obj\Release\LightAndDarknessSpell.pdb

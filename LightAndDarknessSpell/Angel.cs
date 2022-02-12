@@ -187,7 +187,7 @@ namespace LightAndDarknessSpell
 
             foreach (var side in new[] {Side.Left, Side.Right})
             {
-                var weapon = _creature.equipment.GetHeldobject(side);
+                var weapon = _creature.equipment.GetHeldWeapon(side);
 
                 if (weapon != null)
                 {

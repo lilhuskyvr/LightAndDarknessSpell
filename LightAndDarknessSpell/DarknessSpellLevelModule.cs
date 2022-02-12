@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using ThunderRoad;
-using UnityEngine;
-using Object = UnityEngine.Object;
 
 // ReSharper disable UnusedMember.Local
 
@@ -11,11 +7,11 @@ namespace LightAndDarknessSpell
 {
     public class DarknessSpellLevelModule : LevelModule
     {
-        public override IEnumerator OnLoadCoroutine(Level level)
+        public override IEnumerator OnLoadCoroutine()
         {
             EventManager.onCreatureSpawn += EventManagerOnonCreatureSpawn;
 
-            return base.OnLoadCoroutine(level);
+            return base.OnLoadCoroutine();
         }
 
         private void EventManagerOnonCreatureSpawn(Creature creature)

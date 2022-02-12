@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using IngameDebugConsole;
 using ThunderRoad;
-using UnityEngine;
 
 // ReSharper disable UnusedMember.Global
 
@@ -9,7 +8,7 @@ namespace LightAndDarknessSpell
 {
     public class LightAndDarknessSpellTestingLevelModule : LevelModule
     {
-        public override IEnumerator OnLoadCoroutine(Level level)
+        public override IEnumerator OnLoadCoroutine()
         {
             DebugLogConsole.AddCommandInstance("lads_a",
                 "Spawn Angel", "SpawnAngel",
@@ -37,7 +36,7 @@ namespace LightAndDarknessSpell
                 this);
 
 
-            return base.OnLoadCoroutine(level);
+            return base.OnLoadCoroutine();
         }
 
         private void SpawnAngel()

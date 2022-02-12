@@ -12,14 +12,14 @@ namespace LightAndDarknessSpell
     {
         private LightAndDarknessSpellController _lightAndDarknessSpellController;
 
-        public override IEnumerator OnLoadCoroutine(Level level)
+        public override IEnumerator OnLoadCoroutine()
         {
             EventManager.onCreatureSpawn += EventManagerOnonCreatureSpawn;
             EventManager.onLevelLoad += EventManagerOnonLevelLoad;
             _lightAndDarknessSpellController =
                 GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>();
 
-            return base.OnLoadCoroutine(level);
+            return base.OnLoadCoroutine();
         }
 
         private void EventManagerOnonLevelLoad(LevelData leveldata, EventTime eventtime)
@@ -52,7 +52,7 @@ namespace LightAndDarknessSpell
             }
         }
 
-        public override void Update(Level level)
+        public override void Update()
         {
             if (_lightAndDarknessSpellController == null)
             {
@@ -63,7 +63,7 @@ namespace LightAndDarknessSpell
 
             if (!_lightAndDarknessSpellController.darknessSpellController.isTimeStopped)
                 return;
-            foreach (var creature in Creature.list)
+            foreach (var creature in Creature.all)
             {
                 if (!creature.isPlayer)
                 {
@@ -74,7 +74,7 @@ namespace LightAndDarknessSpell
                 }
             }
 
-            foreach (var item in Item.list)
+            foreach (var item in Item.all)
             {
                 if (item.isThrowed || item.isFlying)
                 {

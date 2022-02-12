@@ -42,7 +42,7 @@ namespace LightAndDarknessSpell
 
                 GameManager.local.StartCoroutine(DrainingBlood(targetCreature));
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 //ignore
             }
@@ -76,7 +76,7 @@ namespace LightAndDarknessSpell
 
         private IEnumerator ResumeTime()
         {
-            foreach (var creature in Creature.list)
+            foreach (var creature in Creature.all)
             {
                 if (!creature.isPlayer)
                 {
@@ -100,7 +100,7 @@ namespace LightAndDarknessSpell
                 }
             }
 
-            foreach (var item in Item.list)
+            foreach (var item in Item.all)
             {
                 try
                 {
@@ -126,7 +126,7 @@ namespace LightAndDarknessSpell
             player.locomotion.rb.isKinematic = true;
             player.locomotion.isGrounded = false;
 
-            foreach (var side in new[] {Side.Left, Side.Right})
+            foreach (var side in new[] { Side.Left, Side.Right })
             {
                 try
                 {
@@ -141,7 +141,9 @@ namespace LightAndDarknessSpell
 
 
             player.transform.position = position;
-            player.transform.rotation *= Quaternion.FromToRotation(player.creature.transform.forward, forward);
+            player.transform.rotation *=
+                Quaternion.FromToRotation(Vector3.ProjectOnPlane(player.creature.transform.forward, Vector3.up),
+                    Vector3.ProjectOnPlane(forward, Vector3.up));
             player.locomotion.rb.isKinematic = false;
 
             yield return new WaitForSeconds(0.5f);
@@ -162,7 +164,7 @@ namespace LightAndDarknessSpell
             player.locomotion.rb.isKinematic = true;
             player.locomotion.isGrounded = false;
 
-            foreach (var side in new[] {Side.Left, Side.Right})
+            foreach (var side in new[] { Side.Left, Side.Right })
             {
                 try
                 {
@@ -206,7 +208,7 @@ namespace LightAndDarknessSpell
                 var startPosition = Player.local.creature.transform.position;
                 var startForward = Player.local.creature.transform.forward;
 
-                var creatures = new List<Creature>(Creature.list);
+                var creatures = new List<Creature>(Creature.all);
 
                 foreach (var creature in creatures)
                 {

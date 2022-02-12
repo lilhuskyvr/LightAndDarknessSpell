@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using ThunderRoad;
-using UnityEngine;
-using Object = UnityEngine.Object;
 
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -16,9 +13,9 @@ namespace LightAndDarknessSpell
         private LightAndDarknessSpellController _lightAndDarknessSpellController;
         private List<Item> _items;
 
-        public override void Load(SpellCaster spellCaster)
+        public override void Load(SpellCaster spellCaster, Level level)
         {
-            base.Load(spellCaster);
+            base.Load(spellCaster, level);
             _lightAndDarknessSpellController =
                 GameManager.local.gameObject.GetComponent<LightAndDarknessSpellController>();
             _items = new List<Item>();
@@ -38,9 +35,9 @@ namespace LightAndDarknessSpell
             }
         }
 
-        public override void UpdateImbue()
+        public override void UpdateImbue(float speedRatio)
         {
-            base.UpdateImbue();
+            base.UpdateImbue(speedRatio);
             if (imbue.energy >= imbue.maxEnergy)
             {
                 var item = imbue.colliderGroup.collisionHandler.item;
@@ -79,7 +76,7 @@ namespace LightAndDarknessSpell
                         }
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     //ignore
                 }

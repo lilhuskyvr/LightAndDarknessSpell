@@ -27,8 +27,9 @@ namespace LightAndDarknessSpell
             Destroy(this);
         }
 
-        private void ItemOnOnDespawnEvent()
+        private void ItemOnOnDespawnEvent(EventTime eventTime)
         {
+            if (eventTime != EventTime.OnEnd) return;
             Destroy(this);
         }
 
